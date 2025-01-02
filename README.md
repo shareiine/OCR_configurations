@@ -1,2 +1,2 @@
-# OCR_configurations
-Using python and tesseract
+Testing of different OCR configurations using OpenCV and tesseract/EasyOCR 
+Test both for image and real-time video feed

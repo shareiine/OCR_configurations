@@ -26,17 +26,17 @@ for i in range(0, len(imageBox["text"])):
 	txt = imageBox["text"][i]
 	confidence = int(imageBox["conf"][i])
 
-	if confidence > 90:
+	if confidence > 95:
 		print("Confidence: " + str(confidence))
 		print("Text: " + txt)
 		print("")
 
-	# remove non-ASCII characters
-	txt = "".join(txt).strip()
-	# bounding rectangle per word
-	cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 3)
-	# place text
-	cv2.putText(image, txt, (x, y - 10), cv2.FONT_HERSHEY_DUPLEX, 1.2, (0, 0, 255), 2)
+		# remove non-ASCII characters
+		txt = "".join(txt).strip()
+		# bounding rectangle per word
+		cv2.rectangle(image, (x, y), (x + w, y + h), (20, 255, 57), 3)
+		# place text
+		cv2.putText(image, txt, (x, y - 10), cv2.FONT_HERSHEY_DUPLEX, 1.2, (255, 35, 35), 2)
 
 # display output
 cv2.imshow("Image", image)

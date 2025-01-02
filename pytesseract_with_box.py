@@ -1,5 +1,5 @@
 # USAGE
-# python normal_OCR.py -i image1.jpg
+# python pytesseract_with_box.py -i image1.jpg
 
 # import necessary packages
 import cv2

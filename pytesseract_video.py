@@ -17,7 +17,7 @@ def video_processing(img_array):
 		# coordinates
 		x, y, w, h = (results["left"][i], results["top"][i], results["width"][i], results["height"][i])
 
-		if conf > 90:
+		if conf > 90 and txt.strip():
 			print("Confidence: " + str(conf))
 			print("Text: " + txt)
 			print("")
@@ -25,9 +25,10 @@ def video_processing(img_array):
 			# remove non-ASCII characters
 			txt = "".join(txt).strip()
 			# bounding rectangle per word
-			cv2.rectangle(img_array, (x, y), (x + w, y + h), (20, 255, 57), 3)
+			cv2.rectangle(img_array, (x, y), (x + w, y + h), (20, 255, 57), 2)
 			# place text
-			cv2.putText(img_array, txt, (x, y - 10), cv2.FONT_HERSHEY_DUPLEX, 1.2, (255, 35, 35), 2)
+			cv2.putText(img_array, txt, (x, y - 10), cv2.FONT_HERSHEY_DUPLEX, 1.0, (255, 35, 35), 2)
+	return img_array
 
 def main_program():
 	# open camera; 0 - main cam, 1 - 2nd cam
@@ -42,8 +43,8 @@ def main_program():
 			# ret: boolean to check if frame is successfully captured
 			# img_array: captured frame 
 			ret, img_array = cam.read()
-			cv2.imshow('Camera', img_array)
-			video_processing(img_array)
+			processed_frame = video_processing(img_array)
+			cv2.imshow('Camera', processed_frame)
 			if cv2.waitKey(1) & 0xff == ord('q'): # wait for keypress for 1 ms
 				break
 	cam.release()

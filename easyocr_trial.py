@@ -19,7 +19,7 @@ reader = easyocr.Reader(['en', 'tl'])
 image = cv2.imread(args["image"])
 
 # convert to text
-txt = reader.readtext(image)
+txt = reader.readtext(image, detail = 0)
 
 # display text
 print(txt)

@@ -23,5 +23,3 @@ txt = reader.readtext(image)
 
 # display text
 print(txt)
-
-# draw box and display text
